@@ -1,609 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="MPH Trading">
-<meta name="theme-color" content="#000000">
-<title>MPH Trading Models</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --green: #00ff88;
-    --green-dim: #00cc6a;
-    --red: #ff3355;
-    --gold: #ffd700;
-    --bg: #000000;
-    --bg2: #080808;
-    --bg3: #0f0f0f;
-    --border: #1a1a1a;
-    --text: #e0e0e0;
-    --muted: #444;
-  }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    cursor: crosshair;
-  }
 
-  /* Animated grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridPulse 8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
 
-  @keyframes gridPulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
 
-  /* Scanline effect */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.15) 2px,
-      rgba(0,0,0,0.15) 4px
-    );
-    pointer-events: none;
-    z-index: 1;
-  }
 
-  .container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
 
-  /* ── HEADER ── */
-  header {
-    padding: 60px 0 40px;
-    text-align: center;
-    position: relative;
-  }
 
-  .ticker-bar {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--green);
-    letter-spacing: 2px;
-    margin-bottom: 32px;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+LIVE
+--:--:-- ET
+[
+MPH TRADING MODELS
+]
+ALGORITHMIC EDGE · KALSHI MARKETS · DATA DRIVEN
 
-  .ticker-inner {
-    display: inline-block;
-    animation: ticker 20s linear infinite;
-  }
+3
+ MODELS
 
-  @keyframes ticker {
-    0% { transform: translateX(100vw); }
-    100% { transform: translateX(-100%); }
-  }
+17
+ CITIES
 
-  .logo-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
+8c+
+ EDGE
 
-  .logo-bracket {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 48px;
-    color: var(--green);
-    line-height: 1;
-    animation: bracketBlink 3s ease-in-out infinite;
-  }
+15%
+ KELLY
 
-  @keyframes bracketBlink {
-    0%, 90%, 100% { opacity: 1; }
-    95% { opacity: 0.3; }
-  }
+V5.0
+🌡️
+MODEL 01 · LIVE
+HIGH TEMP WEATHER
+V5.0
+VERSION
+31
+ENSEMBLE
+17
+CITIES
+NBM
+ENGINE
+→
+⚾
+MODEL 02 · ACTIVE
+MLB BETTING MODEL
+LIVE
+SCHEDULE
+4
+MARKETS
+MLB
+STATSAPI
+→
+🏆
+MODEL 03 · IN DEVELOPMENT
+DFS TIERS MODEL
+DK
+PLATFORM
+BETA
+STATUS
+TIERS
+ENGINE
+→
 
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 12vw, 96px);
-    letter-spacing: 6px;
-    line-height: 0.9;
-    background: linear-gradient(135deg, #ffffff 0%, #00ff88 50%, #ffffff 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s ease-in-out infinite;
-  }
+BET
 
-  @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+SKIP
 
-  .tagline {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 4px;
-    margin-top: 16px;
-    text-transform: uppercase;
-  }
+AVOID
 
-  .tagline span {
-    color: var(--green);
-  }
+HIGH
 
-  /* ── LIVE STATUS BAR ── */
-  .status-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    padding: 12px 24px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green);
-    margin: 32px 0;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
+MED
 
-  .status-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-  }
-
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 8px var(--green);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--green); }
-    50% { opacity: 0.4; box-shadow: 0 0 2px var(--green); }
-  }
-
-  .status-item .val {
-    color: var(--green);
-    font-weight: bold;
-  }
-
-  /* ── MODEL CARDS ── */
-  .models-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin: 0 0 48px;
-  }
-
-  .model-card {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 32px 36px;
-    transition: all 0.2s ease;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .model-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--card-color, var(--green));
-    transform: scaleY(0);
-    transition: transform 0.2s ease;
-    transform-origin: bottom;
-  }
-
-  .model-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--card-color, var(--green)) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .model-card:hover {
-    border-color: var(--card-color, var(--green));
-    transform: translateX(4px);
-    background: #0a0a0a;
-  }
-
-  .model-card:hover::before {
-    transform: scaleY(1);
-  }
-
-  .model-card:hover::after {
-    opacity: 0.04;
-  }
-
-  .card-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .card-icon {
-    font-size: 36px;
-    line-height: 1;
-    flex-shrink: 0;
-    filter: grayscale(0.2);
-  }
-
-  .card-body {
-    flex: 1;
-  }
-
-  .card-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--card-color, var(--green));
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-
-  .card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 3px;
-    color: #ffffff;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .card-desc {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .card-arrow {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 20px;
-    color: var(--card-color, var(--green));
-    flex-shrink: 0;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.2s ease;
-  }
-
-  .model-card:hover .card-arrow {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .card-stats {
-    display: flex;
-    gap: 24px;
-    margin-top: 12px;
-  }
-
-  .card-stat {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  .card-stat .stat-val {
-    color: var(--card-color, var(--green));
-    font-size: 14px;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .card-stat .stat-label {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  /* Card color themes */
-  .card-weather { --card-color: #00ff88; }
-  .card-mlb { --card-color: #4488ff; }
-  .card-dfs { --card-color: #ffd700; }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-brand {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 3px;
-    color: var(--muted);
-  }
-
-  .footer-brand span {
-    color: var(--green);
-  }
-
-  .footer-note {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    color: #222;
-    letter-spacing: 2px;
-  }
-
-  /* ── CORNER DECORATIONS ── */
-  .corner {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    z-index: 10;
-    pointer-events: none;
-  }
-
-  .corner-tl {
-    top: 16px; left: 16px;
-    border-top: 1px solid var(--green);
-    border-left: 1px solid var(--green);
-  }
-
-  .corner-tr {
-    top: 16px; right: 16px;
-    border-top: 1px solid var(--green);
-    border-right: 1px solid var(--green);
-  }
-
-  .corner-bl {
-    bottom: 16px; left: 16px;
-    border-bottom: 1px solid var(--green);
-    border-left: 1px solid var(--green);
-  }
-
-  .corner-br {
-    bottom: 16px; right: 16px;
-    border-bottom: 1px solid var(--green);
-    border-right: 1px solid var(--green);
-  }
-
-  /* ── CLOCK ── */
-  .live-clock {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    color: var(--green);
-    letter-spacing: 2px;
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  /* ── ENTRY ANIMATION ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .fade-up:nth-child(1) { animation-delay: 0.1s; }
-  .fade-up:nth-child(2) { animation-delay: 0.2s; }
-  .fade-up:nth-child(3) { animation-delay: 0.3s; }
-  .fade-up:nth-child(4) { animation-delay: 0.4s; }
-  .fade-up:nth-child(5) { animation-delay: 0.5s; }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Mobile */
-  @media (max-width: 600px) {
-    header { padding: 40px 0 24px; }
-    .card-inner { gap: 16px; }
-    .card-title { font-size: 24px; }
-    .card-stats { gap: 16px; }
-    .status-bar { gap: 12px; font-size: 10px; }
-    .status-item { gap: 6px; }
-    footer { flex-direction: column; align-items: flex-start; }
-  }
-</style>
-</head>
-<body>
-
-<!-- Corner decorations -->
-<div class="corner corner-tl"></div>
-<div class="corner corner-tr"></div>
-<div class="corner corner-bl"></div>
-<div class="corner corner-br"></div>
-
-<div class="container">
-
-  <header>
-    <div class="ticker-bar">
-      <span class="ticker-inner">
-        ◆ WEATHER MODEL LIVE &nbsp;&nbsp;&nbsp; ◆ MLB MODEL ACTIVE &nbsp;&nbsp;&nbsp; ◆ DFS MODEL IN DEVELOPMENT &nbsp;&nbsp;&nbsp; ◆ KELLY CRITERION SIZING &nbsp;&nbsp;&nbsp; ◆ GFS ENSEMBLE 31 MEMBERS &nbsp;&nbsp;&nbsp; ◆ 17 CITIES TRACKED &nbsp;&nbsp;&nbsp; ◆ KALSHI PREDICTION MARKETS &nbsp;&nbsp;&nbsp;
-      </span>
-    </div>
-
-    <div class="live-clock" id="clock">--:--:-- ET</div>
-
-    <div class="logo-line">
-      <span class="logo-bracket">[</span>
-      <h1>MPH TRADING<br>MODELS</h1>
-      <span class="logo-bracket">]</span>
-    </div>
-
-    <p class="tagline">ALGORITHMIC EDGE · KALSHI MARKETS · <span>DATA DRIVEN</span></p>
-  </header>
-
-  <div class="status-bar">
-    <div class="status-item">
-      <div class="status-dot"></div>
-      <span class="val">3</span>&nbsp;MODELS LIVE
-    </div>
-    <div class="status-item">
-      <div class="status-dot"></div>
-      <span class="val">17</span>&nbsp;CITIES
-    </div>
-    <div class="status-item">
-      <div class="status-dot"></div>
-      <span class="val">8c+</span>&nbsp;MIN EDGE
-    </div>
-    <div class="status-item">
-      <div class="status-dot"></div>
-      <span class="val">15%</span>&nbsp;KELLY
-    </div>
-  </div>
-
-  <div class="models-grid">
-
-    <a class="model-card card-weather fade-up"
-       href="https://kalshi-weather-f67dad6wmxjfzpgu9kgxfe.streamlit.app"
-       target="_blank" rel="noopener">
-      <div class="card-inner">
-        <div class="card-icon">🌡️</div>
-        <div class="card-body">
-          <div class="card-label">MODEL 01 · LIVE</div>
-          <div class="card-title">HIGH TEMP WEATHER</div>
-          <div class="card-desc">NWS forecast · GFS ensemble blending · Bias-corrected consensus · 17 US cities · Kelly-sized bracket betting</div>
-          <div class="card-stats">
-            <div class="card-stat">
-              <span class="stat-val">V4.35</span>
-              <span class="stat-label">Version</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-val">31</span>
-              <span class="stat-label">Ensemble Members</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-val">17</span>
-              <span class="stat-label">Cities</span>
-            </div>
-          </div>
-        </div>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
-
-    <a class="model-card card-mlb fade-up"
-       href="https://kalshi-mlb-mphill422.streamlit.app"
-       target="_blank" rel="noopener">
-      <div class="card-inner">
-        <div class="card-icon">⚾</div>
-        <div class="card-body">
-          <div class="card-label">MODEL 02 · ACTIVE</div>
-          <div class="card-title">MLB BETTING MODEL</div>
-          <div class="card-desc">Live schedule via MLB StatsAPI · Starter strikeout totals · Team totals · First 5 innings · Series markets</div>
-          <div class="card-stats">
-            <div class="card-stat">
-              <span class="stat-val">LIVE</span>
-              <span class="stat-label">Schedule Data</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-val">4</span>
-              <span class="stat-label">Market Types</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-val">MLB</span>
-              <span class="stat-label">StatsAPI</span>
-            </div>
-          </div>
-        </div>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
-
-    <a class="model-card card-dfs fade-up"
-       href="https://kalshi-dfs-mphill422.streamlit.app"
-       target="_blank" rel="noopener">
-      <div class="card-inner">
-        <div class="card-icon">🏆</div>
-        <div class="card-body">
-          <div class="card-label">MODEL 03 · IN DEVELOPMENT</div>
-          <div class="card-title">DFS TIERS MODEL</div>
-          <div class="card-desc">DraftKings DFS tier optimization · Algorithmic player ranking · Lineup construction engine</div>
-          <div class="card-stats">
-            <div class="card-stat">
-              <span class="stat-val">DK</span>
-              <span class="stat-label">Platform</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-val">BETA</span>
-              <span class="stat-label">Status</span>
-            </div>
-          </div>
-        </div>
-        <div class="card-arrow">→</div>
-      </div>
-    </a>
-
-  </div>
-
-  <footer>
-    <div class="footer-brand"><span>MPH</span> TRADING MODELS</div>
-    <div class="footer-note">PROPRIETARY · ALL MODELS PRIVATE · © 2025</div>
-  </footer>
-
-</div>
-
-<script>
-  // Live clock
-  function updateClock() {
-    const now = new Date();
-    const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-    const h = String(et.getHours()).padStart(2, '0');
-    const m = String(et.getMinutes()).padStart(2, '0');
-    const s = String(et.getSeconds()).padStart(2, '0');
-    document.getElementById('clock').textContent = h + ':' + m + ':' + s + ' ET';
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-
-  // PWA service worker registration
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
-  }
-</script>
-
-</body>
-</html>
+LOW=SKIP
+◆ WEATHER V5.0 LIVE    ◆ NBM PERCENTILE ENGINE    ◆ BIAS CORRECTION 5F CAP    ◆ 17 CITIES TRACKED    ◆ KELLY 15% FRACTIONAL    ◆ 8c MIN EDGE    ◆ GFS 31 MEMBERS    ◆ MLB MODEL ACTIVE    ◆ DFS TIERS IN DEVELOPMENT   
+MPH TRADING MODELS
+PROPRIETARY · © 2026
